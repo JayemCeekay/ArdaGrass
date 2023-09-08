@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "ardagrass",
+  "version": "${version}",
+  "name": "ArdaGrass",
+  "description": "Better grass using continuity",
+  "authors": [
+    "JayemCeekay"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/ArdaGrass/LOGO.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.ardacraft.ardagrass.ArdaGrass"
+    ],
+    "main": [
+    ]
+  },
+  "mixins": [
+    "ArdaGrass.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.14",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}
