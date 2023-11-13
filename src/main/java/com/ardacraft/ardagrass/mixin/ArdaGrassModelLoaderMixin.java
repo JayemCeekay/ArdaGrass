@@ -1,5 +1,6 @@
 package com.ardacraft.ardagrass.mixin;
 
+import com.ardacraft.ardagrass.ArdaGrass;
 import com.ardacraft.ardagrass.ArdaGrassBakedModel;
 import com.ardacraft.ardagrass.ArdaGrassUnbakedModel;
 import net.fabricmc.loader.impl.util.log.Log;
@@ -23,16 +24,6 @@ import java.util.Set;
 
 @Mixin(ModelLoader.class)
 public class ArdaGrassModelLoaderMixin {
-
-    private List<String> betterGrassNames =
-            List.of("minecraft:grass_block",
-                    "minecraft:podzol",
-                    "minecraft:mycelium",
-                    "minecraft:crimson_nylium",
-                    "minecraft:warped_nylium",
-                    "conquest:clover_covered_grass",
-                    "conquest:taiga_grass");
-
     @Shadow
     @Final
     private Map<Identifier, UnbakedModel> unbakedModels;
@@ -45,8 +36,8 @@ public class ArdaGrassModelLoaderMixin {
     private void onPutModel(Identifier id, UnbakedModel unbakedModel, CallbackInfo ci) {
         if (id instanceof ModelIdentifier modelId) {
             if (!modelId.getVariant().equals("inventory")) {
-                betterGrassNames.forEach(s -> {
-                    if (modelId.toString().startsWith(s)) {
+                ArdaGrass.ardaGrassConfig.blockstates.forEach(s -> {
+                    if (modelId.toString().startsWith(s.split("\\[")[0])) {
                         var newModel = new ArdaGrassUnbakedModel(unbakedModel);
                         this.unbakedModels.put(id, newModel);
                         this.modelsToLoad.addAll(newModel.getModelDependencies());

@@ -15,6 +15,9 @@
     "client": [
       "com.ardacraft.ardagrass.ArdaGrass"
     ],
+    "modmenu": [
+      "com.ardacraft.ardagrass.ArdaGrassModMenuIntegration"
+    ],
     "main": [
     ]
   },
@@ -24,6 +27,8 @@
   "depends": {
     "fabricloader": ">=0.14.14",
     "fabric": "*",
-    "minecraft": "1.20.1"
+    "minecraft": ">=1.20.1",
+    "modmenu": "*",
+    "cloth-config2": "*"
   }
 }
